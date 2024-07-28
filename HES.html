@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RHHH F20</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* إعدادات أساسية */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* تدرج هادئ بين الأزرق الفاتح والرمادي */
+    color: #333;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* تأثير الإضاءة الخلفية */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: -1;
+    animation: backgroundGlow 15s infinite linear;
+}
+
+@keyframes backgroundGlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* تأثير الإضاءة المتوهجة للعنصر */
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+    animation: containerFadeIn 1.5s ease-out;
+}
+
+@keyframes containerFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* تأثير التوهج في الرأس والتذييل */
+header, footer {
+    background: linear-gradient(135deg, #004d40, #00796b); /* تدرج ألوان أخضر دافئ */
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: headerFooterGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes headerFooterGlow {
+    0% { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); }
+    50% { box-shadow: 0 20px 40px rgba(0, 255, 255, 0.5); }
+    100% { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); }
+}
+
+header {
+    border-radius: 20px 20px 0 0;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+}
+
+/* تأثير النبض للعنصر */
+.data-summary {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #00796b; /* لون أخضر دافئ */
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 1.1em;
+    color: #333;
+    animation: summaryPulse 2s ease-in-out infinite;
+}
+
+@keyframes summaryPulse {
+    0% { transform: scale(1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3); }
+    100% { transform: scale(1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: tableFadeIn 1.5s ease-out;
+}
+
+@keyframes tableFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+th {
+    background: #004d40; /* أخضر داكن */
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+th:hover {
+    background: #00796b; /* أخضر دافئ */
+    cursor: pointer;
+}
+
+td {
+    background: #ffffff;
+    color: #333;
+}
+
+td:hover {
+    background: #e0f2f1; /* أخضر فاتح */
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+}
+
+/* تأثير تفاعل الألوان في الصفوف */
+.filter-row {
+    background: #e0f2f1; /* أخضر فاتح */
+    border-bottom: 2px solid #004d40; /* أخضر داكن */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+    animation: filterGlow 3s infinite alternate;
+}
+
+@keyframes filterGlow {
+    0% { box-shadow: 0 5px 10px rgba(0, 255, 255, 0.2); }
+    100% { box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4); }
+}
+
+.filter-row input, .filter-row select {
+    border: 2px solid #00796b; /* أخضر دافئ */
+    border-radius: 10px;
+    padding: 12px;
+    margin: 6px 0;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    background: #ffffff;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-row input::placeholder {
+    color: #888;
+}
+
+.filter-row input:focus, .filter-row select:focus {
+    border-color: #004d40; /* أخضر داكن */
+    background: #e0f2f1; /* أخضر فاتح */
+    box-shadow: 0 0 15px rgba(0, 77, 64, 0.3);
+}
+
+/* تمييز الخلايا غير الصفرية في العمود السادس */
+td.highlight {
+    background-color: #ff6f61; /* لون برتقالي دافئ */
+    color: #fff;
+    position: relative;
+    animation: highlightPulse 2s infinite, highlightGlow 3s infinite;
+}
+
+@keyframes highlightPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes highlightGlow {
+    0% { box-shadow: 0 0 8px rgba(255, 105, 97, 0.6); }
+    100% { box-shadow: 0 0 16px rgba(255, 105, 97, 0.8); }
+}
+
+td.highlight .warning-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .data-summary {
+        font-size: 1em;
+        padding: 15px;
+    }
+    .filter-row input, .filter-row select {
+        width: 100%;
+        padding: 10px;
+    }
+}
+/* إعدادات أساسية للصفحة */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f4f8;
+    color: #333;
+}
+
+/* تصميم الشعار */
+#logo {
+    position: fixed;
+    top: 20px; /* المسافة من الأعلى */
+    right: 20px; /* المسافة من اليمين */
+    background: linear-gradient(45deg, #1abc9c, #3498db); /* تأثير تدرج لوني */
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000; /* التأكد من أن الشعار يظهر فوق باقي المحتوى */
+}
+
+/* تأثير التحجيم عند المرور بالفأرة */
+#logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+  </style>
+</head>
+<body>
+    <div id="logo">AGROTAREO</div>
+  <header>
+    <h1>POINTAGE FINCA 20</h1>
+  </header>
+  <div class="container">
+    <div class="data-summary" id="dataSummary">
+       Calculation des totaux des heures...
+    </div>
+	
+    <div class="content">
+      <center><h2>Comparaison des heures de travail (FINCA20)</h2></center>
+      <table id="workHoursTable">
+        <thead>
+          <tr class="filter-row">
+            <th><input type="number" id="numberFilter" onkeyup="filterTable()" placeholder="MATRICULE..."></th>
+            <th><input type="text" id="nameFilter" onkeyup="filterTable()" placeholder="NOMBRE..."></th>
+            <th><input type="text" id="farmFilter" onkeyup="filterTable()" placeholder="EQUIPE..."></th>
+            <th><input type="text" id="realHoursFilter" onkeyup="filterTable()" placeholder="AGRO TAREO..."></th>
+            <th><input type="text" id="recordedHoursFilter" onkeyup="filterTable()" placeholder="RHHH..."></th>
+            <th>
+              <input type="text" id="differenceFilter" onkeyup="filterTable()" placeholder="Afficher les différences non nulles uniquement...">
+              <select id="differenceComparison" onchange="filterTable()">
+                <option value="contains">Contient</option>
+                <option value="equals">Égal à</option>
+                <option value="greater">Supérieur à</option>
+                <option value="less">Inférieur à</option>
+              </select>
+            </th>
+            <th><input type="text" id="column7Filter" onkeyup="filterTable()" placeholder="FINCA..."></th>
+          </tr>
+          <tr id="headerRow">
+            <!-- Les en-têtes des colonnes seront insérés ici -->
+          </tr>
+        </thead>
+        <tbody id="dataTable">
+          <!-- Les données seront insérées ici -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const url = 'https://script.googleusercontent.com/macros/echo?user_content_key=dMMaM4xkIbEYrLLRBCAokpyV0NTl2dNiptsHQ99XP-ttqRXYup7bv8Q0t5M18iUlhB-S_kgRjIrr8A9u8W33fhE_2JCZz2vym5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnPA1OUQ3x_oHy4M7U2xcqugygc1wIwdYhCYE8oZrCGTqN3mfL-62Vs2e2xbsCPzlNgFmfXwK3iZDC39yjhHd58mA2nlo03ik-A&lib=MlRalld_N0-QgjgZWVyXmPt3xLYHdXm_G';
+
+    async function fetchData() {
+      const response = await fetch(url);
+      const data = await response.json();
+      const headers = data.headers;
+      const rows = data.rows;
+
+      const tableHeader = document.getElementById('headerRow');
+      headers.forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        tableHeader.appendChild(th);
+      });
+
+      const tableBody = document.getElementById('dataTable');
+      let totalHours4 = 0; // Variable to store the total of the fourth column
+      let totalHours5 = 0; // Variable to store the total of the fifth column
+      rows.forEach((row, rowIndex) => {
+        const tr = document.createElement('tr');
+        row.forEach((cell, cellIndex) => {
+          const td = document.createElement('td');
+          td.textContent = cell;
+          if (cellIndex === 5 && cell != 0) {
+            td.classList.add('highlight');
+            td.innerHTML += '<i class="fas fa-exclamation-triangle warning-icon"></i>'; // Ajout de l'icône d'avertissement
+          }
+          if (cellIndex === 3) {
+            totalHours4 += Number(cell); // Adding to the total if in the fourth column
+          }
+          if (cellIndex === 4) {
+            totalHours5 += Number(cell); // Adding to the total if in the fifth column
+          }
+		  
+          tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
+      });
+
+      // Update the data summary section with the total of the fourth and fifth columns
+      const dataSummary = document.getElementById('dataSummary');
+      dataSummary.textContent =` Total des heures dans Agrotareo: ${totalHours4} *  *  * Total des heures dans le Pointage : ${totalHours5}` ;
+    }
+
+    function compare(value, filter, comparison) {
+      switch (comparison) {
+        case 'equals':
+          return value == filter;
+        case 'greater':
+          return Number(value) > Number(filter);
+        case 'less':
+          return Number(value) < Number(filter);
+        case 'contains':
+        default:
+          return value.includes(filter);
+      }
+    }
+
+    function filterTable() {
+      const numberFilter = document.getElementById('numberFilter').value;
+      const nameFilter = document.getElementById('nameFilter').value.toLowerCase();
+      const farmFilter = document.getElementById('farmFilter').value.toLowerCase();
+      const realHoursFilter = document.getElementById('realHoursFilter').value.toLowerCase();
+      const recordedHoursFilter = document.getElementById('recordedHoursFilter').value.toLowerCase();
+      const differenceFilter = document.getElementById('differenceFilter').value.toLowerCase();
+      const differenceComparison = document.getElementById('differenceComparison').value;
+      const column7Filter = document.getElementById('column7Filter').value.toLowerCase();
+
+      console.log('Filters:', {
+        numberFilter,
+        nameFilter,
+        farmFilter,
+        realHoursFilter,
+        recordedHoursFilter,
+        differenceFilter,
+        differenceComparison,
+        column7Filter
+      });
+
+      const table = document.getElementById('workHoursTable');
+      const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+      for (let i = 0; i < rows.length; i++) {
+        const tds = rows[i].getElementsByTagName('td');
+        let display = 'none';
+
+        if (
+          (tds[0] && (!numberFilter || Number(tds[0].textContent) == Number(numberFilter))) &&
+          (tds[1] && tds[1].textContent.toLowerCase().includes(nameFilter) || nameFilter === '') &&
+          (tds[2] && tds[2].textContent.toLowerCase().includes(farmFilter) || farmFilter === '') &&
+          (tds[3] && tds[3].textContent.toLowerCase().includes(realHoursFilter) || realHoursFilter === '') &&
+          (tds[4] && tds[4].textContent.toLowerCase().includes(recordedHoursFilter) || recordedHoursFilter === '') &&
+          (tds[5] && compare(tds[5].textContent, differenceFilter, differenceComparison)) &&
+          (tds[6] && tds[6].textContent.toLowerCase().includes(column7Filter) || column7Filter === '')
+        ) {
+          display = '';
+        }
+
+        const col4 = tds[3] && Number(tds[3].textContent.trim()) === 0;
+        const col5 = tds[4] && Number(tds[4].textContent.trim()) === 0;
+
+        if (col4 && col5) {
+          display = 'none';
+        }
+
+        rows[i].style.display = display;
+
+        if (tds[5] && tds[5].classList.contains('highlight')) {
+          tds[5].style.backgroundColor = '#e74c3c';
+          tds[5].style.color = '#fff';
+        } else {
+          tds[5].style.backgroundColor = '';
+          tds[5].style.color = '';
+        }
+      }
+    }
+
+    fetchData();
+  </script>
+</body>
+</html>
